@@ -91,43 +91,57 @@ function toggleMusic() {
   }
 }
 
-function tryStartMusic() {
+async function tryStartMusic() {
   if (state.musicReady || !musicAudio) {
     return;
   }
 
-  fetch("assets/music.mp3", { method: "HEAD", cache: "no-store" })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("music missing");
+  const musicCandidates = [
+    "assets/music.mp3",
+    "assets/leberch-happy-birthday-581704.mp3"
+  ];
+
+  let selectedTrack = null;
+
+  for (const candidate of musicCandidates) {
+    try {
+      const response = await fetch(candidate, { method: "HEAD", cache: "no-store" });
+      if (response.ok) {
+        selectedTrack = candidate;
+        break;
       }
+    } catch (error) {
+      // keep trying the next fallback
+    }
+  }
 
-      musicAudio.src = "assets/music.mp3";
-      musicAudio.load();
+  if (!selectedTrack) {
+    state.musicReady = false;
+    musicToggle.classList.add("hidden");
+    return;
+  }
 
-      musicAudio.oncanplaythrough = () => {
-        state.musicReady = true;
-        musicToggle.classList.remove("hidden");
-      };
+  musicAudio.src = selectedTrack;
+  musicAudio.load();
 
-      musicAudio.onerror = () => {
-        state.musicReady = false;
-        musicToggle.classList.add("hidden");
-      };
+  musicAudio.oncanplaythrough = () => {
+    state.musicReady = true;
+    musicToggle.classList.remove("hidden");
+  };
 
-      musicAudio.play().then(() => {
-        state.musicReady = true;
-        musicToggle.classList.remove("hidden");
-        musicToggle.classList.add("is-playing");
-      }).catch(() => {
-        state.musicReady = false;
-        musicToggle.classList.add("hidden");
-      });
-    })
-    .catch(() => {
-      state.musicReady = false;
-      musicToggle.classList.add("hidden");
-    });
+  musicAudio.onerror = () => {
+    state.musicReady = false;
+    musicToggle.classList.add("hidden");
+  };
+
+  musicAudio.play().then(() => {
+    state.musicReady = true;
+    musicToggle.classList.remove("hidden");
+    musicToggle.classList.add("is-playing");
+  }).catch(() => {
+    state.musicReady = false;
+    musicToggle.classList.add("hidden");
+  });
 }
 
 function setVisible(element, visible) {
