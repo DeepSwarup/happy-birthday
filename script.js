@@ -679,7 +679,12 @@ enterButton.addEventListener("click", () => {
   setTimeout(() => {
     enterButton.style.display = "none";
   }, 100);
-  tryStartMusic();
+  if (musicAudio && musicAudio.src) {
+    musicAudio.play().catch(() => {});
+    musicToggle.classList.add("is-playing");
+  } else {
+    tryStartMusic();
+  }
 });
 
 musicToggle.addEventListener("click", toggleMusic);
@@ -709,5 +714,6 @@ window.addEventListener("load", () => {
   bindNavigation();
   updateNavigationGates();
   runIntroSequence();
+  tryStartMusic();
   musicToggle.classList.add("hidden");
 });
