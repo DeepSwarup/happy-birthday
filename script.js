@@ -281,7 +281,7 @@ function revealMessageLines() {
     "Anyone can type...",
     "Happy Birthday 🎂",
     "But sometimes...",
-    "...someone deserves a little more heart."
+    "...someone deserves a little more care and Love."
   ];
 
   lines.forEach((line, index) => {
