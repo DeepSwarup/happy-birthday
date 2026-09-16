@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A little birthday magic made for one very special day."
+    />
+    <meta name="theme-color" content="#080b16" />
+    <title>✨ A Little Birthday Magic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="starfield" aria-hidden="true"></div>
+    <div id="fireworksLayer" aria-hidden="true"></div>
+    <div id="confettiLayer" aria-hidden="true"></div>
+
+    <main id="contentShell" class="site-shell">
+      <section id="home" class="panel intro-panel">
+        <div class="intro-inner">
+          <div class="intro-lines">
+            <p id="introLine1" class="intro-line intro-line-1">Hey 愛しい,</p>
+            <p id="introLine2" class="intro-line intro-line-2">Today is your day.</p>
+            <p id="introLine3" class="intro-line intro-line-3">So I made you a little something.</p>
+          </div>
+          <button id="enterButton" class="primary-button" aria-label="Enter birthday experience">
+            Enter ✨
+          </button>
+        </div>
+      </section>
+
+      <section id="birthday" class="panel hero-panel reveal">
+        <div class="hero-wrap">
+          <p class="eyebrow">birthday</p>
+          <h1 class="hero-title">
+            <span class="title-line hero-title">HAPPY</span>
+            <span class="title-line">BIRTHDAY</span>
+            <span class="title-line">愛しい</span>
+          </h1>
+          <div class="sparkle">✨</div>
+          <p class="hero-copy">Today deserves a little extra magic.</p>
+          <div class="hero-glow glow-one"></div>
+          <div class="hero-glow glow-two"></div>
+        </div>
+        <div class="story-controls">
+          <button class="section-back" type="button" data-target="#home" aria-label="Go back to intro">Back</button>
+          <button class="section-next" type="button" data-target="#message" aria-label="Go to the next section">
+            Keep going ✨
+          </button>
+        </div>
+      </section>
+
+      <section id="message" class="panel message-panel reveal">
+        <div class="container narrow">
+          <p class="section-kicker">A little message</p>
+          <h2>Because ordinary birthday wishes are boring.</h2>
+          <div id="messageLines" class="message-lines" aria-live="polite"></div>
+        </div>
+        <div class="story-controls">
+          <button class="section-back" type="button" data-target="#birthday" aria-label="Go back to birthday hero">Back</button>
+          <button class="section-next" type="button" data-target="#stars" aria-label="Go to the stars section">
+            Follow the stars ↓
+          </button>
+        </div>
+      </section>
+
+      <section id="stars" class="panel stars-panel reveal">
+        <div class="container">
+          <p class="section-kicker">Birthday universe</p>
+          <h2>Choose a magic star.</h2>
+          <div id="starGrid" class="star-grid" aria-live="polite"></div>
+          <div id="starMessage" class="star-message" role="status" aria-live="polite"></div>
+        </div>
+        <div class="story-controls">
+          <button class="section-back" type="button" data-target="#message" aria-label="Go back to the message section">Back</button>
+          <button class="section-next" type="button" data-target="#checklist" data-gate="star" aria-label="Go to the checklist section">
+            See the checklist ↓
+          </button>
+        </div>
+      </section>
+
+      <section id="checklist" class="panel checklist-panel reveal">
+        <div class="container narrow">
+          <p class="section-kicker">Little things</p>
+          <h2>Your birthday checklist</h2>
+          <div id="checklistList" class="checklist" aria-live="polite">
+            <button class="check-item" type="button" aria-label="Mark smile more as complete">
+              <span class="check-box" aria-hidden="true">✓</span>
+              <span>Smile more</span>
+            </button>
+            <button class="check-item" type="button" aria-label="Mark eat something delicious as complete">
+              <span class="check-box" aria-hidden="true">✓</span>
+              <span>Eat something delicious</span>
+            </button>
+            <button class="check-item" type="button" aria-label="Mark ignore unnecessary stress as complete">
+              <span class="check-box" aria-hidden="true">✓</span>
+              <span>Ignore unnecessary stress</span>
+            </button>
+            <button class="check-item" type="button" aria-label="Mark make a wish as complete">
+              <span class="check-box" aria-hidden="true">✓</span>
+              <span>Make a wish</span>
+            </button>
+            <button class="check-item" type="button" aria-label="Mark do something ridiculously happy as complete">
+              <span class="check-box" aria-hidden="true">✓</span>
+              <span>Do something that makes you ridiculously happy</span>
+            </button>
+            <button class="check-item" type="button" aria-label="Mark have cake as complete">
+              <span class="check-box" aria-hidden="true">✓</span>
+              <span>Have cake</span>
+            </button>
+            <button class="check-item" type="button" aria-label="Mark repeat tomorrow as complete">
+              <span class="check-box" aria-hidden="true">✓</span>
+              <span>Repeat tomorrow</span>
+            </button>
+          </div>
+          <p id="checklistStatus" class="checklist-status" aria-live="polite"></p>
+        </div>
+        <div class="story-controls">
+          <button class="section-back" type="button" data-target="#stars" aria-label="Go back to the stars section">Back</button>
+          <button class="section-next" type="button" data-target="#distance" data-gate="checklist" aria-label="Go to the distance section">
+            The Distance ↓
+          </button>
+        </div>
+      </section>
+
+      <section id="distance" class="panel distance-panel reveal">
+        <div class="container narrow">
+          <p class="section-kicker">The distance</p>
+          <h2>One small problem...</h2>
+          <div class="distance-visual">
+            <div class="distance-point left-point">
+              <span class="dot"></span>
+              <span class="label">You’re there.</span>
+            </div>
+            <div class="distance-line" aria-hidden="true"></div>
+            <div class="distance-point right-point">
+              <span class="dot"></span>
+              <span class="label">I’m here.</span>
+            </div>
+          </div>
+          <p class="distance-copy">Unfortunately, this website hasn't figured out teleportation yet.</p>
+          <p class="distance-copy punchline">But we're working on it. 😌</p>
+        </div>
+        <div class="story-controls">
+          <button class="section-back" type="button" data-target="#checklist" aria-label="Go back to the checklist">Back</button>
+          <button class="section-next" type="button" data-target="#wish" aria-label="Go to the wish section">
+            Make a wish ↓
+          </button>
+        </div>
+      </section>
+
+      <section id="wish" class="panel wish-panel reveal">
+        <div class="container narrow">
+          <p class="section-kicker">Make a wish</p>
+          <h2 class="cake-margin">One important thing remains.</h2>
+          <div class="cake-scene">
+            <div class="cake-glow"></div>
+            <div id="cake" class="cake" aria-label="Birthday cake" role="button" tabindex="0">
+              <div class="cake-top"></div>
+              <div class="cake-body">
+                <div class="icing icing-top"></div>
+                <div class="icing icing-side"></div>
+              </div>
+              <div class="candles">
+                <button class="candle" type="button" aria-label="Light the birthday candle">
+                  <span class="flame"></span>
+                </button>
+                <button class="candle" type="button" aria-label="Light the birthday candle">
+                  <span class="flame"></span>
+                </button>
+                <button class="candle" type="button" aria-label="Light the birthday candle">
+                  <span class="flame"></span>
+                </button>
+                <button class="candle" type="button" aria-label="Light the birthday candle">
+                  <span class="flame"></span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="wish-copy-wrap">
+            <h3 id="wishHeading">Make a wish. ✨</h3>
+            <p id="wishDetail">Good.</p>
+            <p id="wishSecret">I'm not asking what it was.</p>
+            <p id="wishFinal">Some wishes are better kept secret.</p>
+          </div>
+        </div>
+        <div class="story-controls">
+          <button class="section-back" type="button" data-target="#distance" aria-label="Go back to the distance section">Back</button>
+          <button class="section-next" type="button" data-target="#letter" aria-label="Read the birthday letter">
+            Read the letter ✨
+          </button>
+        </div>
+      </section>
+
+      <section id="letter" class="panel letter-panel reveal">
+        <div class="container narrow">
+          <p class="section-kicker">A little message</p>
+          <h2>For you, with love.</h2>
+          <article id="wishLetterCard" class="letter-card wish-letter-card visible" aria-live="polite">
+            <div id="letterText" class="letter-text"></div>
+          </article>
+          <div class="letter-final-wrap">
+            <p class="letter-end-tag">End</p>
+            <p class="letter-closing">Now go enjoy your birthday. 🎂</p>
+          </div>
+        </div>
+        <div class="story-controls">
+          <button class="section-back" type="button" data-target="#wish" aria-label="Go back to the wish section">Back</button>
+        </div>
+      </section>
+    </main>
+
+    <button id="musicToggle" class="music-toggle" type="button" aria-label="Toggle music">
+      ♫
+    </button>
+
+    <audio id="bgMusic" preload="auto" loop></audio>
+
+    <script src="script.js"></script>
+  </body>
+</html>
